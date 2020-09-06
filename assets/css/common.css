@@ -1,0 +1,13 @@
+/** 
+*   HEADER fixes
+**/
+.header-center-content {
+	margin: 0px;
+}
+
+.floating-logo-right {
+	margin: 0px;
+}
+.floating-logo-right img {
+	height: 250px;
+}
