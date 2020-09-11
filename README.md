@@ -4,4 +4,5 @@ Budeme rádi za jakýkoli příspěvek, který web vylepší či na něm něco o
 
 ### To Do
 - Opravit responzivitu
-- Přidat počet hráčů pod každý ze serverů
+- Přidat počet hráčů pod každý ze serverů (opravit nefunkční)
+- Přidat součet všech hráčů na všech serverech
