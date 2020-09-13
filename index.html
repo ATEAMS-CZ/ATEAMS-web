@@ -8,6 +8,7 @@
 
     <meta property="description" content="Komunikace je základní kámen mezilidských vztahů, které následně utvářejí přátelství. Tohle je přesně ten důvod, proč jsme se rozhodli vytvořit discord server spojující admin-týmy významných serverů naší Minecraftové scény. Cílem je propojit komunity z různých serverů, vzájemně si pomáhat v některých případech, sdílet své výtvory a zažít mnohdy srandu u hraní různých her.">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/leonardosnt/mc-player-counter/dist/mc-player-counter.min.js"></script>
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
@@ -17,6 +18,7 @@
     <meta name="theme-color" content="#da3949">
     <meta property="og:image" content="https://cdn.discordapp.com/icons/740329156558061620/85c2f62523491f3b039d2230176171a0.webp"/>
     <link rel="stylesheet" type="text/css" href="assets/css/common.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/hover.css">
 </head>                                                                  
 <style>
     * {
@@ -28,7 +30,7 @@
 
     /* Track */
     ::-webkit-scrollbar-track {
-        background: rgba(4, 14, 16, 0.788);
+        background: rgba(40, 45, 46, 0.788);
     }
 
     /* Handle */
@@ -41,12 +43,26 @@
     ::-webkit-scrollbar-thumb:hover {
         background: rgba(218, 57, 73, 0.829);
     }
+    br {
+        display: block;
+        content: "";
+        margin-top: 1;
+     }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
 <script>
+
+    var total = 0;
+    var max = 0;
     function ping(ip, id){
         fetch('https://api.mcsrvstat.us/2/'+ ip)
   .then(response => response.json())
-  .then(data => document.getElementById(id).innerHTML = "Hráči: "+ data.players.online +"/"+ data.players.max);
+  .then(data => {
+        document.getElementById(id).innerHTML = "Hráči: <span style='color: rgb(172, 206, 172)'>"+ data.players.online +"</span>/<span style='color: rgb(206, 179, 172)'>"+ data.players.max +"</span>";
+        total = total + data.players.online;
+        max = max + data.players.max;
+        document.getElementById("total-players").innerHTML = "Hráči online: <span style='color: rgb(172, 206, 172)'>"+ total +"</span>/<span style='color: rgb(206, 179, 172)'>"+ max +"</span>";
+  });
     }
     ping("mc.survival-games.cz", "sg-players");
     ping("mc.trenend.eu", "trenend-players")
@@ -69,12 +85,11 @@
 <body style="background: rgb(4,14,16); width: 100%;">
     <div class="text-left d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="background: linear-gradient(#05111500, #051115), url('https://i.imgur.com/vbhLpT2.png') no-repeat top center / cover; position: relative; margin-top: -35px; z-index:1;">
         <div class="row justify-content-center align-items-center align-content-center header-center-content" style="padding-top: 250px; padding-bottom: 150px;">
-            <div class="col-md-6" style="max-width: 39%;">
+            <div class="col-md-6" style="max-width: 100%;">
                 <h1 style="color: rgb(229,231,232);"><b>ATEAMS</b></h1><a style="color: rgb(207,207,207);"><br>Komunikace je základní kámen mezilidských vztahů, které následně utvářejí přátelství. Tohle je přesně ten důvod, proč jsme se rozhodli vytvořit discord server spojující admin-týmy významných serverů naší Minecraftové scény. Cílem je propojit komunity z různých serverů, vzájemně si pomáhat v některých případech, sdílet své výtvory a zažít mnohdy srandu u hraní různých her.<br><br></a>
-                 <a href="https://discord.io/ateams" class="btn kontakty" type="button" style="color: white; border-radius: 11px;background-color: rgb(218,57,73);border-width: 3px;border-color: rgba(255,255,255,0);padding-left: 25px;padding-right: 25px;padding-top: 7px;padding-bottom: 7px;font-size: 15px;margin-right: 54px;margin-top: 9px;">&nbsp; <i class="fas fa-address-card" style="font-size: 17px;padding-top: 1px;padding-bottom: 1px;"></i>&nbsp; Discord</button>
-                 <a href="#servery" class="btn servery" type="button" style="border-radius: 11px;border-width: 3px;border-color: rgb(218,57,73);padding-top: 7px;padding-bottom: 7px;padding-left: 25px;padding-right: 25px;margin-top: 9px;">&nbsp; <i class="fa fa-server" style="padding-top: 1px;padding-bottom: 1px;"></i>&nbsp; Servery</a>
-		             <a href="#formular" class="btn servery" type="button" style="border-radius: 11px;border-width: 3px;border-color: rgb(218,57,73);padding-top: 7px;padding-bottom: 7px;padding-left: 25px;padding-right: 25px;margin-top: 9px;">&nbsp; <i class="fa fa-plus-square" style="padding-top: 1px;padding-bottom: 1px;"></i>&nbsp; Přidat server</a>
-		             <a href="#tym" class="btn servery" type="button" style="border-radius: 11px;border-width: 3px;border-color: rgb(218,57,73);padding-top: 7px;padding-bottom: 7px;padding-left: 25px;padding-right: 25px;margin-top: 9px;">&nbsp; <i class="fa fa-users" style="padding-top: 1px;padding-bottom: 1px;"></i>&nbsp; Tým</a>
+                 <a href="https://discord.io/ateams" id="discorder" class="g-btn-light-contants" type="button" style="color: white; border-radius: 11px;background-color: rgb(218,57,73);border-width: 3px;border-color: rgba(255,255,255,0);padding-left: 25px;padding-right: 25px;padding-top: 7px;padding-bottom: 7px;font-size: 15px;margin-right: 54px;margin-top: 9px;">&nbsp; <i class="fas fa-address-card" style="font-size: 17px;padding-top: 1px;padding-bottom: 1px;"></i>&nbsp; Discord</button>
+                 <a href="#servery" class="g-btn-light" type="button" style="border-radius: 11px;border-width: 3px;border-color: rgb(218,57,73);padding-top: 7px;padding-bottom: 7px;padding-left: 25px;padding-right: 25px;margin-top: 9px;">&nbsp; <i class="fa fa-server" style="padding-top: 1px;padding-bottom: 1px;"></i>&nbsp; Servery</a>
+		             <a href="#tym" class="g-btn-light" type="button" style="border-radius: 11px;border-width: 3px;border-color: rgb(218,57,73);padding-top: 7px;padding-bottom: 7px;padding-left: 25px;padding-right: 25px;margin-top: 9px;">&nbsp; <i class="fa fa-users" style="padding-top: 1px;padding-bottom: 1px;"></i>&nbsp; Tým</a>
 	    </div>
             <div class="floating-logo-right">
             	<img src="https://cdn.discordapp.com/attachments/712202181218140200/748564839269662800/FullColor_TransparentBg_1280x1024_72dpi.png">
@@ -84,47 +99,76 @@
     <div></div>
     <div class="text-center align-items-center" style="height: 337px;">
         <h1 data-aos="fade-up" data-aos-duration="550" data-aos-once="true" id="servery" style="color: rgb(234,234,234);margin-top: 36px;padding-bottom: 2px;">Spolupracující servery</h1>
-        <h6 data-aos="fade-up" data-aos-duration="550" data-aos-once="true" id="tym-dsc" style="color: rgb(234,234,234);margin-top: 8px;padding-bottom: 16px;">Pracovníci těchto serverů mohou využívat společného Discord serveru s uzavřenou komunitou</h6>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="650" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://survival-games.cz"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/g5stcvM.png"></a><a href="https://survival-games.cz" style="color: rgb(255,255,255);">Survival-Games.cz</a><br><a id="sg-players" style="color: rgba(255, 255, 255, 0.644);">Hráči: 0/0</a></div>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://qplay.cz"><img style="height: 128px; border-radius: 20px;" class="d-flex" src="https://i.ibb.co/2txNJhB/15036562-1364361873575333-8292350112409939716-n.png"></a><a href="https://qplay.cz" style="color: rgb(255,255,255);">QPlay.cz</a><br><a id="qplay-players" style="color: rgba(255, 102, 102, 0.644);">Hráči: 0/0</a></div>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://trenend.eu"><img style="height: 128px" class="d-flex" src="https://static.planetminecraft.com/files/resource_media/screenshot/12773717-logo.png"></a><a href="https://trenend.eu" style="color: rgb(255,255,255);">Trenend.eu</a><br><a id="trenend-players" style="color: rgba(255, 255, 255, 0.644);">Hráči: 0/0</a></div>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://minicraft.cz"><img style="height: 128px" class="d-flex" src="https://i.ibb.co/dbNw817/14195448-1755005204747249-1564906114316199215-o-removebg-preview.png"></a><a href="https://minicraft.cz" style="color: rgb(255,255,255);">MiniCraft.cz</a><br><a id="mc-players" style="color: rgba(255, 255, 255, 0.644);">Hráči: 0/0</a></div>
+        <h6 data-aos="fade-up" data-aos-duration="550" data-aos-once="true" id="tym-dsc" style="color: rgb(234,234,234);margin-top: 8px;">Pracovníci těchto serverů mohou využívat společného Discord serveru s uzavřenou komunitou</h6>
+        <h6 data-aos="fade-up" data-aos-duration="550" data-aos-once="true" id="total-players" style="color: rgb(234,234,234);margin-top: 3px;padding-bottom: 16px;">Hráči online: </h6>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="650" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://survival-games.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/sg.png"></a><a href="https://survival-games.cz" style="color: rgb(255,255,255);font-size:14px">Survival-Games.cz</a><br><a id="sg-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://qplay.cz"><img style="height: 128px; border-radius: 20px;" class="d-flex" src="./assets/logos/qplay.png"></a><a href="https://qplay.cz" style="color: rgb(255,255,255);font-size:14px">QPlay.cz</a><br><a id="qplay-players" style="color: rgb(185, 235, 165);font-size:13px">Online</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://trenend.eu"><img style="height: 128px" class="d-flex" src="./assets/logos/trenend.webp"></a><a href="https://trenend.eu" style="color: rgb(255,255,255);font-size:14px">Trenend.eu</a><br><a id="trenend-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://minicraft.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/minicraft.png"></a><a href="https://minicraft.cz" style="color: rgb(255,255,255);font-size:14px">MiniCraft.cz</a><br><a id="mc-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a></div>
 	    	<br>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="650" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://basicland.cz"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/rx3OCWY.png"></a><a href="https://basicland.cz" style="color: rgb(255,255,255);">BasicLand.cz</a><br><a id="bl-players" style="color: rgba(255, 255, 255, 0.644);">Hráči: 0/0</a></div>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://craftmania.cz"><img style="height: 128px; border-radius: 20px;" class="d-flex" src="https://i.ibb.co/fQ0NCDG/64242666-2417987518339783-1700963459040018432-o.jpg"></a><a href="https://craftmania.cz" style="color: rgb(255,255,255);">CraftMania.cz</a><br><a id="cm-players" style="color: rgba(255, 255, 255, 0.644);">Hráči: 0/0</a></div>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://kastrolcraft.cz"><img style="height: 128px" class="d-flex" src="https://i.ibb.co/wBBbH9m/d-N5r8fh-removebg-preview.png"></a><a href="https://kastrolcraft.cz" style="color: rgb(255,255,255);">KastrolCraft.cz</a><br><a id="kc-players" style="color: rgba(255, 255, 255, 0.644);">Hráči: 0/0</a></div>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://surpriseplay.eu"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/qiE3zlA.png"></a><a href="https://surpriseplay.eu" style="color: rgb(255,255,255);">SurprisePlay.eu</a><br><a id="sp-players" style="color: rgba(255, 255, 255, 0.644);">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="650" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://basicland.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/bl.png"></a><a href="https://basicland.cz" style="color: rgb(255,255,255);font-size:14px">BasicLand.cz</a><br><a id="bl-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://craftmania.cz"><img style="height: 128px; border-radius: 20px;" class="d-flex" src="./assets/logos/craftmania.webp"></a><a href="https://craftmania.cz" style="color: rgb(255,255,255);font-size:14px">CraftMania.cz</a><br><a id="cm-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://kastrolcraft.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/kastrol.png"></a><a href="https://kastrolcraft.cz" style="color: rgb(255,255,255);font-size:14px">KastrolCraft.cz</a><br><a id="kc-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://surpriseplay.eu"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/qiE3zlA.png"></a><a href="https://surpriseplay.eu" style="color: rgb(255,255,255);font-size:14px">SurprisePlay.eu</a><br><a id="sp-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a></div>
 	    	<br>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="650" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://warfaremc.eu"><img style="height: 128px" class="d-flex" src="https://cdn.discordapp.com/attachments/712202181218140200/748575954598887566/wf.png"></a><a href="https://warfaremc.eu" style="color: rgb(255,255,255);">WarfareMC.eu</a><br><a id="wf-players" style="color: rgb(255, 255, 255);">Hráči: 0/0</a></div>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://pvpmania.eu"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/PvSJYb0.png"></a><a href="https://pvpmania.eu" style="color: rgb(255,255,255);">PvPMania.eu</a><br><a id="pvm-players" style="color: rgb(255, 255, 255);">Hráči: 0/0</a></div>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://retrox.eu"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/CMibalw.png"></a><a href="https://retrox.eu" style="color: rgb(255,255,255);">Retrox.eu</a><br><a id="rt-players" style="color: rgb(255, 255, 255);">Hráči: 0/0</a></div>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://alexcraft.sk"><img style="height: 128px; border-radius: 20px;" class="d-flex" src="https://i.ibb.co/Hdbrp2d/89236287-2510195039308865-8313578636485591040-n.png"></a><a href="https://alexcraft.sk" style="color: rgb(255,255,255);">AlexCraft.sk</a><br><a id="alex-players" style="color: rgba(255, 255, 255, 0.644);">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="650" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://warfaremc.eu"><img style="height: 128px" class="d-flex" src="https://cdn.discordapp.com/attachments/712202181218140200/748575954598887566/wf.png"></a><a href="https://warfaremc.eu" style="color: rgb(255,255,255);font-size:14px">WarfareMC.eu</a><br><a id="wf-players" style="color: rgb(255, 255, 255);font-size:13px">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://pvpmania.eu"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/PvSJYb0.png"></a><a href="https://pvpmania.eu" style="color: rgb(255,255,255); font-size:14px">PvPMania.eu</a><br><a id="pvm-players" style="color: rgb(255, 255, 255);font-size:13px">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://retrox.eu"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/CMibalw.png"></a><a href="https://retrox.eu" style="color: rgb(255,255,255); font-size:14px">Retrox.eu</a><br><a id="rt-players" style="color: rgb(255, 255, 255);font-size:13px">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://alexcraft.sk"><img style="height: 128px; border-radius: 20px;" class="d-flex" src="./assets/logos/alexcraft.jpg"></a><a href="https://alexcraft.sk" style="color: rgb(255,255,255); font-size:14px">AlexCraft.sk</a><br><a id="alex-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a></div>
 	    	<br>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="650" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://skydropmc.cz/"><img style="height: 128px" class="d-flex" src="https://skydropmc.cz/wp-content/uploads/2020/01/skydrop2.png"></a><a href="https://skydropmc.cz/" style="color: rgb(255,255,255);">SkyDropMC.cz</a><br><a id="sky-players" style="color: rgb(255, 255, 255);">Hráči: 0/0</a></div>
-		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://czech-survival.cz"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/xyVPzui.png"></a><a href="https://czech-survival.cz" style="color: rgb(255,255,255);">Czech-Survival.cz</a><br><a id="cs-players" style="color: rgb(255, 255, 255);">Hráči: 0/0</a></div>
-    <div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://arconix.eu"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/Q0eZ0Pu.png"></a><a href="https://arconix.eu" style="color: rgb(255,255,255);">ArcoNix.eu</a><br><a id="acr-players" style="color: rgb(255, 102, 102);">Hráči: 0/0</a></div>
-    <div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;"><a href="https://pvpcraft.cz"><img style="height: 128px" class="d-flex" src="https://cdn.discordapp.com/attachments/712202181218140200/748577573750964255/PNtext1500.png"></a><a href="https://pvpcraft.cz" style="color: rgb(255,255,255);">PvPCraft.cz</a><br><a id="pvp-players" style="color: rgba(255, 255, 255, 0.644);">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="650" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://skydropmc.cz/"><img style="height: 128px" class="d-flex" src="https://skydropmc.cz/wp-content/uploads/2020/01/skydrop2.png"></a><a href="https://skydropmc.cz/" style="color: rgb(255,255,255);font-size:14px">SkyDropMC.cz</a><br><a id="sky-players" style="color: rgb(255, 255, 255);font-size:13px">Hráči: 0/0</a></div>
+		<div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://czech-survival.cz"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/xyVPzui.png"></a><a href="https://czech-survival.cz" style="color: rgb(255,255,255);font-size:14px">Czech-Survival.cz</a><br><a id="cs-players" style="color: rgb(255, 255, 255);font-size:13px">Hráči: 0/0</a></div>
+    <div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://arconix.eu"><img style="height: 128px" class="d-flex" src="https://i.imgur.com/Q0eZ0Pu.png"></a><a href="https://arconix.eu" style="color: rgb(255,255,255);font-size:14px">ArcoNix.eu</a><br><a id="acr-players" style="color: rgb(185, 235, 165);font-size:13px">Online</a></div>
+    <div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://pvpcraft.cz"><img style="height: 128px" class="d-flex" src="https://cdn.discordapp.com/attachments/712202181218140200/748577573750964255/PNtext1500.png"></a><a href="https://pvpcraft.cz" style="color: rgb(255,255,255);font-size:14px">PvPCraft.cz</a><br><a id="pvp-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a></div>
       <div>
-      <hr style="height:5px; border-width:0;background-color: rgb(218,57,73);width:10%;margin-top:100px;border-radius:2px">
+        <hr data-aos="fade-up" data-aos-once="true" style="height:5px; border-width:0;background-color: rgb(218,57,73);width:6%;margin-top:50px;border-radius:2px">
       </div>  
         <div class="text-center align-items-center" style="height: 337px; padding-bottom: 70px; margin-top: 100px">
             <h1 data-aos="fade-up" data-aos-duration="550" data-aos-once="true" id="tym" style="color: rgb(234,234,234);margin-top: 36px;padding-bottom: 2px;">Tým stojící za ATEAMS</h1>
-            <h6 data-aos="fade-up" data-aos-duration="550" data-aos-once="true" id="tym-dsc" style="color: rgb(234,234,234);margin-top: 8px;padding-bottom: 16px;">Všichni dělají svou práci dobrovolně pro komunitu ❤</h6>
-            <div></div>
-            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="650" data-aos-once="true" style="padding-left: 20px;padding-right: 30px;margin-top: 10px;"><a href="https://www.instagram.com/theerikcz/"><img class="d-flex" src="https://cravatar.eu/helmavatar/TheErikCZ/190.png" style="border-radius: 15px;width: 100px;"><a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">TheErikCZ</a><span class="badge badge-pill" style="background-color: rgb(190,2,2);border-radius: 15px;padding-left: 20px;padding-right: 20px;margin-top: 6px">Manager</span>
+            <h6 data-aos="fade-up" data-aos-duration="550" data-aos-once="true" id="tym-dsc" style="color: rgb(234,234,234);margin-top: 8px;padding-bottom: 16px;color: rgba(255, 255, 255, 0.644)">Všichni dělají svou práci dobrovolně pro komunitu ❤</h6>
+          <br>
+            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="650" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;">
+                  <a href="https://www.instagram.com/theerikcz/"><img class="d-flex" src="https://cravatar.eu/helmavatar/TheErikCZ/190.png" style="border-radius: 15px;width: 100px;">
+                  <a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">TheErikCZ</a>
+                  <br>
+                  <a class="badge badge-pill" style="background-color: rgb(190,2,2);border-radius: 15px;padding-left: 15px;padding-right: 15px;margin-right: 6px;margin-left: 6px">Manager</a>
 	          </div>
-            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 20px;padding-right: 30px;margin-top: 10px;"><a href="https://www.instagram.com/ta.lutysek/"><img class="d-flex" src="https://cravatar.eu/helmavatar/lutysek/190.png" style="border-radius: 15px;width: 100px;"><a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">lutysek</a><span class="badge badge-pill" style="background-color: rgb(153,45,34);border-radius: 15px;padding-left: 20px;padding-right: 20px;margin-top: 6px">Moderator</span>
+            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;">
+                  <a href="https://www.instagram.com/ta.lutysek/"><img class="d-flex" src="https://cravatar.eu/helmavatar/lutysek/190.png" style="border-radius: 15px;width: 100px;">
+                  <a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">lutysek</a>
+                  <br>
+                  <a class="badge badge-pill" style="background-color: rgb(153,45,34);border-radius: 15px;padding-left: 15px;padding-right: 15px;margin-right: 6px;margin-left: 6px">Moderator</a>
             </div>
-            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 20px;padding-right: 30px;margin-top: 10px;"><a href="https://cs.namemc.com/profile/ZorTik.2"><img class="d-flex" src="https://cravatar.eu/helmavatar/ZorTik/190.png" style="border-radius: 15px;width: 100px;"><a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">ZorTik</a><span class="badge badge-pill" style="background-color: rgb(161,31,198);border-radius: 15px;padding-left: 20px;padding-right: 20px;margin-top: 6px">Developer</span>
+            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;">
+                  <a href="https://cs.namemc.com/profile/ZorTik.2"><img class="d-flex" src="https://cravatar.eu/helmavatar/ZorTik/190.png" style="border-radius: 15px;width: 100px;">
+                  <a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">ZorTik</a>
+                  <br>
+                  <a class="badge badge-pill" style="background-color: rgb(161,31,198);border-radius: 15px;padding-left: 15px;padding-right: 15px;margin-right: 6px;margin-left: 6px">Developer</a>
             </div>
-            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 20px;padding-right: 30px;margin-top: 10px;"><a href="https://cs.namemc.com/profile/GGGEDR.1"><img class="d-flex" src="https://cravatar.eu/helmavatar/GGGEDR/190.png" style="border-radius: 15px;width: 100px;"><a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">GGGEDR</a><span class="badge badge-pill" style="background-color: rgb(161,31,198);border-radius: 15px;padding-left: 20px;padding-right: 20px;margin-top: 6px">Developer</span>
+            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;">
+                  <a href="https://cs.namemc.com/profile/GGGEDR.1"><img class="d-flex" src="https://cravatar.eu/helmavatar/GGGEDR/190.png" style="border-radius: 15px;width: 100px;">
+                  <a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">GGGEDR</a>
+                  <br>
+                  <a class="badge badge-pill" style="background-color: rgb(161,31,198);border-radius: 15px;padding-left: 15px;padding-right: 15px;margin-right: 6px;margin-left: 6px">Developer</a>
             </div>
-            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="850" data-aos-once="true" style="padding-left: 20px;padding-right: 30px;margin-top: 10px;"><a href="https://cs.namemc.com/profile/_OnlyAri_.1"><img class="d-flex" src="https://cravatar.eu/helmavatar/_OnlyAri_/190.png" style="border-radius: 15px;width: 100px;"><a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">_OnlyAri_</a><span class="badge badge-pill" style="background-color: rgb(255,170,1);border-radius: 15px;padding-left: 20px;padding-right: 20px;margin-top: 6px">Helper</span>
+            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="850" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;">
+                  <a href="https://cs.namemc.com/profile/_OnlyAri_.1"><img class="d-flex" src="https://cravatar.eu/helmavatar/_OnlyAri_/190.png" style="border-radius: 15px;width: 100px;">
+                  <a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">_OnlyAri_</a>
+                  <br>
+                  <a class="badge badge-pill" style="background-color: rgb(21, 156, 4);border-radius: 15px;padding-left: 15px;padding-right: 15px;margin-right: 6px;margin-left: 6px">Helper</a>
             </div>
-            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="900" data-aos-once="true" style="padding-left: 20px;padding-right: 30px;margin-top: 10px;"><a href="https://cs.namemc.com/profile/Fjuro.1"><img class="d-flex" src="https://cravatar.eu/helmavatar/Fjuro/190.png" style="border-radius: 15px;width: 100px;"><a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">Fjuro</a><span class="badge badge-pill" style="background-color: rgb(255,170,1);border-radius: 15px;padding-left: 20px;padding-right: 20px;margin-top: 6px">Helper</span>
+            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="900" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;">
+                  <a href="https://cs.namemc.com/profile/Fjuro.1"><img class="d-flex" src="https://cravatar.eu/helmavatar/Fjuro/190.png" style="border-radius: 15px;width: 100px;">
+                  <a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">Fjuro</a>
+                  <br>
+                  <a class="badge badge-pill" style="background-color:rgb(21, 156, 4);border-radius: 15px;padding-left: 15px;padding-right: 15px;margin-right: 6px;margin-left: 6px">Helper</a>
             </div>
-            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="950" data-aos-once="true" style="padding-left: 20px;padding-right: 30px;margin-top: 10px;"><a href="https://cs.namemc.com/profile/Drbnaaa.1"><img class="d-flex" src="https://cravatar.eu/helmavatar/Drbnaaa/190.png" style="border-radius: 15px;width: 100px;"><a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">Drbnaa</a><span class="badge badge-pill" style="background-color: rgb(255,170,1);border-radius: 15px;padding-left: 20px;padding-right: 20px;margin-top: 6px">Helper</span>
-            </div>
+            <div class="d-inline-block" data-aos="fade-up" data-aos-duration="950" data-aos-once="true" style="padding-left: 30px;padding-right: 30px;margin-top: 10px;">
+                  <a href="https://cs.namemc.com/profile/Drbnaaa.1"><img class="d-flex" src="https://cravatar.eu/helmavatar/Drbnaaa/190.png" style="border-radius: 15px;width: 100px;">
+                  <a class="d-xl-flex justify-content-xl-center" style="color: rgb(255,255,255);margin-top: 6px;">Drbnaa</a>
+                  <br>
+                  <a class="badge badge-pill" style="background-color: rgb(21, 156, 4);border-radius: 15px;padding-left: 15px;padding-right: 15px;margin-right: 6px;margin-left: 6px">Helper</a>
+            </div>    
     <footer>
      <div style="background: rgb(2,8,10); width: 100%;">
         <div class="text-center d-xl-flex justify-content-xl-center" style="margin-top: 100px; padding-bottom: 40px;">
@@ -133,7 +177,7 @@
                 <br><a style="color: white;">&copy;ATEAMS 2020<br>Nejsme spojeni s Mojang AB</a>
             </div>
         </div>
-     </div>   
+     </div>                                   
     </footer>
     </div>
     <script src="assets/js/jquery.min.js"></script>
