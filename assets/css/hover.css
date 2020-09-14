@@ -9,6 +9,19 @@
  */
 /* 2D TRANSITIONS */
 /* Grow */
+
+@keyframes pulse {
+  0% {
+    transform: scaleX(1.25) scaleY(1.25) scaleZ(1.25);
+  }
+  50% {
+    transform: scaleX(1.0) scaleY(1.0) scaleZ(1.0);
+  }
+  100% {
+    transform: scaleX(1.25) scaleY(1.25) scaleZ(1.25);
+  }
+}
+
 .hvr-grow {
   color: rgb(206, 179, 172);
   display: inline-block;

@@ -123,7 +123,7 @@
         fetch('https://api.mcsrvstat.us/2/'+ ip)
   .then(response => response.json())
   .then(data => {
-        document.getElementById(id).innerHTML = "Hráči: <span style='color: rgb(172, 206, 172)'>"+ data.players.online +"</span>/<span style='color: rgb(206, 179, 172)'>"+ data.players.max +"</span>";
+        document.getElementById(id).innerHTML = "Hráči: <span style='color: rgb(172, 206, 172)'>"+ data.players.online +"</span>/<span style='color: rgb(206, 179, 172)' class='.counter'>"+ data.players.max +"</span>";
         total = total + data.players.online;
         max = max + data.players.max;
         document.getElementById("total-players").innerHTML = "Hráči online: <span style='color: rgb(172, 206, 172)'>"+ total +"</span>/<span style='color: rgb(206, 179, 172)'>"+ max +"</span>";
@@ -157,7 +157,9 @@
 		             <a href="#tym" class="g-btn-light" type="button" style="border-radius: 11px;border-width: 3px;border-color: rgb(218,57,73);padding-top: 7px;padding-bottom: 7px;padding-left: 25px;padding-right: 25px;margin-top: 9px;">&nbsp; <i class="fa fa-users" style="padding-top: 1px;padding-bottom: 1px;"></i>&nbsp; Tým</a>
 	    </div>
             <div class="floating-logo-right">
-            	<img src="https://cdn.discordapp.com/attachments/712202181218140200/748564839269662800/FullColor_TransparentBg_1280x1024_72dpi.png">
+            	<img src="https://cdn.discordapp.com/attachments/712202181218140200/748564839269662800/FullColor_TransparentBg_1280x1024_72dpi.png" style="animation-name: pulse;
+                animation-duration: 7s;
+                animation-iteration-count: infinite;">
             </div>
         </div>
     </div>
