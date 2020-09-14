@@ -10,6 +10,7 @@
 /* 2D TRANSITIONS */
 /* Grow */
 
+
 @keyframes pulse {
   0% {
     transform: scaleX(1.25) scaleY(1.25) scaleZ(1.25);
@@ -21,6 +22,16 @@
     transform: scaleX(1.25) scaleY(1.25) scaleZ(1.25);
   }
 }
+
+.btni-animeee {
+  transition: all 0.3s;
+}
+
+.btni-animeee:hover {
+  transform: scaleX(1.03) scaleY(1.03) scaleZ(1.03);
+  transition: all 0.3s;
+}
+
 
 .hvr-grow {
   transition: all 0.3s;
