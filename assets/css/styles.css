@@ -4,12 +4,12 @@ body {
 
 .mediar {
     color: rgb(210,210,210);
-    transition: all 0.2s;
+    transition: all 0.5s;
 }
 
 .mediar:hover {
-    color: rgba(210, 210, 210, 0.623);
-    transition: all 0.2s;
+    color: rgb(255, 140, 140);
+    transition: all 0.5s;
 }
 
 .kontakty {
