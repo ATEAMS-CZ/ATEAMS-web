@@ -129,23 +129,38 @@
         document.getElementById("total-players").innerHTML = "Statistika online hráčů: <span style='color: rgb(172, 206, 172)'>"+ total +"</span>/<span style='color: rgb(206, 179, 172)'>"+ max +"</span>";
   });
     }
-    ping("mc.survival-games.cz", "sg-players");
-    ping("mc.trenend.eu", "trenend-players")
-    ping("play.minicraft.cz", "mc-players");
-    ping("mc.czech-survival.cz", "cs-players");
-    ping("mc.basicland.cz", "bl-players");
-    ping("mc.craftmania.cz", "cm-players");
-    ping("mc.kastrolcraft.cz", "kc-players");
-    ping("mc.surpriseplay.eu", "sp-players");
-    ping("mc.WarfareMC.eu", "wf-players");
-    ping("mc.WarfareMC.eu", "wf-players");
-    ping("mc.PvPMania.eu", "pvm-players");
-    ping("mc.PvPCraft.cz", "pvp-players");
-    ping("play.retrox.eu", "rt-players");
-    ping("mc.alexcraft.sk", "alex-players");
-    ping("play.skydropmc.cz", "sky-players");
-    //ping("mc.arconix.eu", "acr-players");
-    //ping("mc.qplay.cz", "qplay-players");
+
+    function pingq(id, name){
+        fetch('https://api.ateams.cz/'+ name +'/')
+  .then(response => response.json())
+  .then(data => {
+        document.getElementById(id).innerHTML = "Hráči: <span style='color: rgb(172, 206, 172)'>"+ data.online-players +"</span>/<span style='color: rgb(206, 179, 172)' class='.counter'>"+ data.max-players +"</span>";
+        total = total + data.online-players;
+        max = max + data.max-players;
+        document.getElementById("total-players").innerHTML = "Statistika online hráčů: <span style='color: rgb(172, 206, 172)'>"+ total +"</span>/<span style='color: rgb(206, 179, 172)'>"+ max +"</span>";
+  });
+    }
+    reping();
+    function reping(){
+        ping("mc.survival-games.cz", "sg-players");
+        ping("mc.trenend.eu", "trenend-players")
+        ping("play.minicraft.cz", "mc-players");
+        ping("mc.czech-survival.cz", "cs-players");
+        ping("mc.basicland.cz", "bl-players");
+        ping("mc.craftmania.cz", "cm-players");
+        ping("mc.kastrolcraft.cz", "kc-players");
+        ping("mc.surpriseplay.eu", "sp-players");
+        ping("mc.WarfareMC.eu", "wf-players");
+        ping("mc.WarfareMC.eu", "wf-players");
+        ping("mc.PvPMania.eu", "pvm-players");
+        ping("mc.PvPCraft.cz", "pvp-players");
+        ping("play.retrox.eu", "rt-players");
+        ping("mc.alexcraft.sk", "alex-players");
+        ping("play.skydropmc.cz", "sky-players");
+        pingq("acr-players", "acronix");
+        pingq("qplay-players", "qplay");
+        setTimeout(reping, 5000)
+    }
 </script>
 <body style="background: rgb(4,14,16); width: 100%;">
     <div class="text-left d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="background: linear-gradient(#05111500, #051115), url('https://i.imgur.com/vbhLpT2.png') no-repeat top center / cover; position: relative; margin-top: -35px; z-index:1;">
