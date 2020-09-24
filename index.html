@@ -134,7 +134,7 @@
         fetch('https://api.ateams.cz/'+ name +'/')
   .then(response => response.json())
   .then(data => {
-        document.getElementById(id).innerHTML = "Hráči: <span style='color: rgb(172, 206, 172)'>"+ data.online-players +"</span>/<span style='color: rgb(206, 179, 172)' class='.counter'>"+ data.max-players +"</span>";
+        document.getElementById(id).innerHTML = "Hráči: <span style='color: rgb(172, 206, 172)'>"+ data.online +"</span>/<span style='color: rgb(206, 179, 172)' class='.counter'>"+ data.max +"</span>";
         total = total + data.online-players;
         max = max + data.max-players;
         document.getElementById("total-players").innerHTML = "Statistika online hráčů: <span style='color: rgb(172, 206, 172)'>"+ total +"</span>/<span style='color: rgb(206, 179, 172)'>"+ max +"</span>";
