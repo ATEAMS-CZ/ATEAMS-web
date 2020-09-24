@@ -143,23 +143,22 @@
     reping();
     function reping(){
         ping("mc.survival-games.cz", "sg-players");
-        ping("mc.trenend.eu", "trenend-players")
-        ping("play.minicraft.cz", "mc-players");
+        pingq("trenend-players", "trenend")
+        pingq("mc-players", "minicraft");
         ping("mc.czech-survival.cz", "cs-players");
         ping("mc.basicland.cz", "bl-players");
         ping("mc.craftmania.cz", "cm-players");
         ping("mc.kastrolcraft.cz", "kc-players");
         ping("mc.surpriseplay.eu", "sp-players");
         ping("mc.WarfareMC.eu", "wf-players");
-        ping("mc.WarfareMC.eu", "wf-players");
         ping("mc.PvPMania.eu", "pvm-players");
         ping("mc.PvPCraft.cz", "pvp-players");
         ping("play.retrox.eu", "rt-players");
-        ping("mc.alexcraft.sk", "alex-players");
+        pingq("alex-players", "alexcraft");
         ping("play.skydropmc.cz", "sky-players");
         pingq("acr-players", "acronix");
         pingq("qplay-players", "qplay");
-        setTimeout(reping, 10000)
+        setTimeout(reping, 5000)
     }
 </script>
 <body style="background: rgb(4,14,16); width: 100%;">
