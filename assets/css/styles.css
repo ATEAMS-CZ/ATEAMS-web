@@ -82,6 +82,8 @@ html {
 .ateams-header {
     height: 100vh;
     width: 100vw;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .ateams-footer {
     margin-top: 100px;
@@ -91,4 +93,10 @@ html {
 }
 .media-ico {
     margin-bottom: 15px;
+}
+@media only screen and (max-width: 773px) {
+    .floating-logo-right img {
+        height: 65% !important;
+        width: 65% !important;
+    }
 }
