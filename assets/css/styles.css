@@ -1,10 +1,13 @@
 body {
     overflow-x: hidden;
+    background: rgb(4,14,16);
+    width: 100%;
 }
 
 .mediar {
     color: rgb(210,210,210);
     transition: all 0.5s;
+    font-size:14px
 }
 
 .mediar:hover {
@@ -29,4 +32,63 @@ html {
 
 .paddingeruv {
     padding-top: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 20px;
+}
+
+.desc {
+    margin-top: 8px;
+    padding-bottom: 16px;
+    color: rgba(255, 255, 255, 0.644);
+    font-size: 1rem;
+}
+.heading {
+    color: rgb(234,234,234);
+    margin-top: 36px;
+    padding-bottom: 2px;
+    font-size: 2.5rem;
+}
+.team-body {
+    height: 337px;
+    padding-bottom: 70px;
+    margin-top: 100px
+}
+.team-user {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.team-user p {
+    color: rgb(255,255,255);
+    margin-top: 6px;
+    margin-bottom: 0px;
+}
+.modal-body h6 {
+    color: rgb(236, 78, 94);
+    margin-top: 30px;
+}
+.modal-body p {
+    color: rgb(185, 63, 75);
+    font-size: 13px;
+}
+.modal-header {
+    border-color: rgb(218,57,73);
+}
+.modal-content {
+    background-color: #2C2F33 !important;
+}
+.ateams-header {
+    height: 100vh;
+    width: 100vw;
+}
+.ateams-footer {
+    margin-top: 100px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    text-align: center;
+}
+.media-ico {
+    margin-bottom: 15px;
 }
