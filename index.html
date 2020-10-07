@@ -19,6 +19,7 @@
     <meta property="og:image" content="https://cdn.discordapp.com/icons/740329156558061620/85c2f62523491f3b039d2230176171a0.webp"/>
     <link rel="stylesheet" type="text/css" href="assets/css/common.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/hover.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>
 </head>                                                                  
 <style>
     * {
@@ -180,33 +181,114 @@
         </div>
     </div>
     <div></div>
+    <style>
+        /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+  background-color: transparent;
+  width: 128px;
+  height: 128px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+background-color: rgb(14 21 23);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+    </style>
     <div class="text-center align-items-center" style="height: 337px;">
         <h1 data-aos="fade-up" data-aos-duration="550" data-aos-once="true" id="servery" style="color: rgb(234,234,234);margin-top: 36px;padding-bottom: 2px;">Minecraft servery</h1>
         <h6 data-aos="fade-up" data-aos-duration="550" data-aos-once="true" id="tym-dsc" style="color: rgba(255, 255, 255, 0.644);margin-top: 8px;">Členové admin-týmů všech těchto serverů mohou mít na Discord serveru přidělenou roli podle toho, na jakém serveru působí.</h6>
-        <h6 data-aos="fade-up" data-aos-duration="550" data-aos-once="true" id="total-players" style="color: rgba(255, 255, 255, 0.644);margin-top: 3px;padding-bottom: 16px;">Statistika online hráčů: </h6>
-		<div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://qplay.cz"><img style="height: 128px; border-radius: 20px;" class="d-flex" src="./assets/logos/qplay.png"></a><a href="https://qplay.cz" style="color: rgb(255,255,255);font-size:14px">QPlay.cz</a><!--<br><a id="qplay-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Online</a>--></div></div>
-		<div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://trenend.eu"><img style="height: 128px" class="d-flex" src="./assets/logos/trenend.png"></a><a href="https://trenend.eu" style="color: rgb(255,255,255);font-size:14px">Trenend.eu</a><!--<br><a id="trenend-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
-        <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://basicland.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/bl.png"></a><a href="https://basicland.cz" style="color: rgb(255,255,255);font-size:14px">BasicLand.cz</a><!--<br><a id="bl-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
-        <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="850" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://minicraft.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/minicraft.png"></a><a href="https://minicraft.cz" style="color: rgb(255,255,255);font-size:14px">MiniCraft.cz</a><!--<br><a id="mc-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
+		<div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://qplay.cz"><img style="height: 128px; border-radius: 20px;" class="d-flex" src="./assets/logos/qplay.png"></a><a href="https://qplay.cz" class="mediar" style="font-size:14px">QPlay.cz</a><!--<br><a id="qplay-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Online</a>--></div></div>
+		<div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://trenend.eu"><img style="height: 128px" class="d-flex" src="./assets/logos/trenend.png"></a><a href="https://trenend.eu" class="mediar" style="font-size:14px">Trenend.eu</a><!--<br><a id="trenend-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
+        <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://basicland.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/bl.png"></a><a href="https://basicland.cz" class="mediar" style="font-size:14px">BasicLand.cz</a><!--<br><a id="bl-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
+        <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="850" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://minicraft.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/minicraft.png"></a><a href="https://minicraft.cz" class="mediar" style="font-size:14px">MiniCraft.cz</a><!--<br><a id="mc-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
 	    	<br>
-            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://craftmania.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/craftmania.png"></a><a href="https://craftmania.cz" style="color: rgb(255,255,255);font-size:14px">CraftMania.cz</a><!--<br><a id="cm-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
-            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://kastrolcraft.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/kastrol.png"></a><a href="https://kastrolcraft.cz" style="color: rgb(255,255,255);font-size:14px">KastrolCraft.cz</a><!--<br><a id="kc-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
-            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="http://www.slux.cz/"><img style="height: 128px" class="d-flex" src="./assets/logos/slux.png"></a><a href="http://www.slux.cz/" style="color: rgb(255,255,255);font-size:14px">Slux.cz</a><!--<br><a id="slux-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
-            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="850" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://warfaremc.eu"><img style="height: 128px" class="d-flex" src="./assets/logos/wf.png"></a><a href="https://warfaremc.eu" style="color: rgb(255,255,255);font-size:14px">WarfareMC.eu</a><!--<br><a id="wf-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
+            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://craftmania.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/craftmania.png"></a><a href="https://craftmania.cz" class="mediar" style="font-size:14px">CraftMania.cz</a><!--<br><a id="cm-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
+            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://kastrolcraft.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/kastrol.png"></a><a href="https://kastrolcraft.cz" class="mediar" style="font-size:14px">KastrolCraft.cz</a><!--<br><a id="kc-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
+            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="http://www.slux.cz/"><img style="height: 128px" class="d-flex" src="./assets/logos/slux.png"></a><a href="http://www.slux.cz/" class="mediar" style="font-size:14px">Slux.cz</a><!--<br><a id="slux-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
+            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="850" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://warfaremc.eu"><img style="height: 128px" class="d-flex" src="./assets/logos/wf.png"></a><a href="https://warfaremc.eu" class="mediar" style="font-size:14px">WarfareMC.eu</a><!--<br><a id="wf-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
 	    	<br>
             <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://pvpmania.eu"><img style="height: 128px" class="d-flex" src="./assets/logos/pvpmania.png"></a><a href="https://pvpmania.eu" style="color: rgb(255,255,255); font-size:14px">PvPMania.eu</a><!--<br><a id="pvm-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
             <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://retrox.eu"><img style="height: 128px" class="d-flex" src="./assets/logos/retrox.png"></a><a href="https://retrox.eu" style="color: rgb(255,255,255); font-size:14px">Retrox.eu</a><!--<br><a id="rt-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
             <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://alexcraft.sk"><img style="height: 128px; border-radius: 20px;" class="d-flex" src="./assets/logos/alexcraft.jpg"></a><a href="https://alexcraft.sk" style="color: rgb(255,255,255); font-size:14px">AlexCraft.sk</a><!--<br><a id="alex-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
-            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="850" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://skydropmc.cz/"><img style="height: 128px" class="d-flex" src="./assets/logos/skydrop.png"></a><a href="https://skydropmc.cz/" style="color: rgb(255,255,255);font-size:14px">SkyDropMC.cz</a><!--<br><a id="sky-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
+            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="850" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://skydropmc.cz/"><img style="height: 128px" class="d-flex" src="./assets/logos/skydrop.png"></a><a href="https://skydropmc.cz/" class="mediar" style="font-size:14px">SkyDropMC.cz</a><!--<br><a id="sky-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
 	    	<br>
-            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://czech-survival.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/czechsurvival.png"></a><a href="https://czech-survival.cz" style="color: rgb(255,255,255);font-size:14px">Czech-Survival.cz</a><!--<br><a id="cs-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
-            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://arconix.eu"><img style="height: 128px" class="d-flex" src="./assets/logos/arconix.png"></a><a href="https://arconix.eu" style="color: rgb(255,255,255);font-size:14px">ArcoNix.eu</a><!--<br><a id="acr-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Online</a>--></div></div>
-            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://pvpcraft.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/pvpcraft.png"></a><a href="https://pvpcraft.cz" style="color: rgb(255,255,255);font-size:14px">PvPCraft.cz</a><!--<br><a id="pvp-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
-            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="850" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://mc.mnrp.cz/ "><img style="height: 128px" class="d-flex" src="./assets/logos/mnrp.png"></a><a href="https://mc.mnrp.cz/" style="color: rgb(255,255,255);font-size:14px">Midnightmc.cz</a><!--<br><a id="mnrp-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
-    
+            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="700" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://czech-survival.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/czechsurvival.png"></a><a href="https://czech-survival.cz" class="mediar" style="font-size:14px">Czech-Survival.cz</a><!--<br><a id="cs-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
+            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="750" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://arconix.eu"><img style="height: 128px" class="d-flex" src="./assets/logos/arconix.png"></a><a href="https://arconix.eu" class="mediar" style="font-size:14px">ArcoNix.eu</a><!--<br><a id="acr-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Online</a>--></div></div>
+            <div class="hvr-grow d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="800" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://pvpcraft.cz"><img style="height: 128px" class="d-flex" src="./assets/logos/pvpcraft.png"></a><a href="https://pvpcraft.cz" class="mediar" style="font-size:14px">PvPCraft.cz</a><!--<br><a id="pvp-players" style="color: rgba(255, 255, 255, 0.644);font-size:13px">Hráči: 0/0</a>--></div></div>
+            <div class="hvr-grow server d-inline-block"><div class="d-inline-block paddingeruv" data-aos="fade-up" data-aos-duration="850" data-aos-once="true" style="padding-left: 40px;padding-right: 40px;margin-top: 20px;"><a href="https://mc.mnrp.cz/" id="mnrp"><img id="ss" style="height: 128px" class="d-flex" src="./assets/logos/mnrp.png"></a><a href="https://mc.mnrp.cz/" class="mediar" style="font-size:14px">Midnightmc.cz</a></div></div>
       <div style="margin-top: 30px;">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5Igw_euENs9LtnXFRO7bcUKfZRQapvJylUOEGCnZMDECGhg/viewform" data-aos="fade-up" data-aos-once="true" class="g-btn-light" style="border-radius: 11px;border-width: 3px;border-color: rgb(218,57,73);padding-top: 7px;padding-bottom: 7px;padding-left: 20px;padding-right: 20px;margin-top: 9px;">&nbsp; <i class="fa fa-plus" style="padding-top: 1px;padding-bottom: 1px;"></i>&nbsp; Přidat server</a>
+        <a data-aos="fade-up" data-toggle="modal" href="#" data-target="#pridat-server" data-aos-once="true" class="g-btn-light" style="border-radius: 11px;border-width: 3px;border-color: rgb(218,57,73);padding-top: 7px;padding-bottom: 7px;padding-left: 20px;padding-right: 20px;margin-top: 9px;">&nbsp; <i class="fa fa-plus" style="padding-top: 1px;padding-bottom: 1px;"></i>&nbsp; Přidat server</a>
         <hr data-aos="fade-up" data-aos-once="true" style="height:5px; border-width:0;background-color: rgb(218,57,73);width:6%;margin-top:50px;border-radius:2px">
+        <div class="modal fade" id="pridat-server" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content"  style="background-color: #2C2F33 !important;">
+                <div class="modal-header" style="border-color: rgb(218,57,73);">
+                  <h5 class="modal-title" id="staticBackdropLabel" style="color: rgb(218,57,73);"><b>Podmínky pro přijetí serveru</b></h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: rgb(218,57,73);">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body" style="text-align: left !important;">
+                    <h6 style="color: rgb(236, 78, 94);"><b>Denní průměr hráčů min. 40</b></h6>
+                    <a style="color: rgb(185, 63, 75); font-size: 13px;">40 hráčů pravidelně je hranice, která už není jednoduchá získat pouhým pozváním lidí ze svého streamu, většinou poukazuje na kvalitu serveru</a><br>
+                    <br>
+                    <h6 style="color: rgb(236, 78, 94); margin-top: 10px;"><b>Serverové komunitní servery - teamspeak / discord / web</b></h6>
+                    <a style="color: rgb(185, 63, 75); font-size: 13px;">Je velmi důležité, aby měl server alespoň jednu platformu, kam se mohou kromě Minecraftu lidé obrátit na podporu či hledat důležité informace</a><br>
+                    <br>
+                    <h6 style="color: rgb(236, 78, 94); margin-top: 10px;"><b>Profesionalita a kvalitní reprezentace</b></h6>
+                    <a style="color: rgb(185, 63, 75); font-size: 13px;">Pozitivní recenze a kvalitní ohlasy na server dovedou tuto oblast skvěle popsat. Mimo jiné by se sám server měl prezentovat nekonfliktně a taktéž by měl být co nejvíce korektní</a><br>
+                    <a style="color: rgb(167, 64, 74); font-size: 13px;">* Nepovinné avšak výhodné doplňkové</a><br>
+                    <br>
+
+                    <h6 style="color: rgb(236, 78, 94); margin-top: 10px;"><b>Ostatné</b></h6>
+                    <a style="color: rgb(185, 63, 75); font-size: 13px;">Body označené jako * nejsou povinné, avšak při rozhodování o přijetí serveru dodávají plusové body</a><br>
+                    
+                    <a style="color:  rgb(185, 63, 75); font-size: 13px;">* Vlastní doména (př.: .cz, .sk, .eu, .net) </a><br>
+                    <a style="color: rgb(185, 63, 75); font-size: 13px;">• Vlastní doménou se rozumí koupená a zaregistrovaná doména buď u českých nebo zahraničních registrátorů</a><br>
+                    
+                    <a style="color:  rgb(185, 63, 75); font-size: 13px;">* Sociální sítě (Instagram, Twitter eventuelně Facebook)</a><br>
+                    <a style="color:  rgb(185, 63, 75); font-size: 13px;">• Server je aktivní na některé sociální síti. Sdílí pravidelně příspěvky a jejich prostřednictvím ohlašuje a sděluje nové informace nebo kterékoliv jiné serverové záležitosti</a><br>
+                </div>
+                <div class="modal-footer"  style="border-color: rgb(218,57,73);">
+                  <button type="button" class="btn" style="background-color: rgb(168, 42, 55); color: whitesmoke;" data-dismiss="modal">Zatvorit</button>
+                  <a type="button" href="https://docs.google.com/forms/d/e/1FAIpQLSf5Igw_euENs9LtnXFRO7bcUKfZRQapvJylUOEGCnZMDECGhg/viewform" class="btn" style="background-color: rgb(218,57,73); color: whitesmoke;">Rozumím</a>
+                </div>
+              </div>
+            </div>
+          </div>
       </div>  
         <div class="text-center align-items-center" style="height: 337px; padding-bottom: 70px; margin-top: 100px">
             <h1 data-aos="fade-up" data-aos-duration="550" data-aos-once="true" id="tym" style="color: rgb(234,234,234);margin-top: 36px;padding-bottom: 2px;">Tým stojící za ATEAMS</h1>
@@ -272,6 +354,9 @@
      </div>                                   
     </footer>
     </div>
+    <script>
+        new ClipboardJS('#mnrp-players');
+    </script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
