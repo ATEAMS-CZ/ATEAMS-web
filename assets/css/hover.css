@@ -17,13 +17,13 @@
 
 @keyframes pulse {
   0% {
-    transform: scaleX(1.25) scaleY(1.25) scaleZ(1.25);
+    transform: scaleX(1.25) scaleY(1.25) scaleZ(1.25); /* Pôvodne: 1.25 */
   }
   50% {
     transform: scaleX(1.0) scaleY(1.0) scaleZ(1.0);
   }
   100% {
-    transform: scaleX(1.25) scaleY(1.25) scaleZ(1.25);
+    transform: scaleX(1.25) scaleY(1.25) scaleZ(1.25); /* Pôvodne: 1.25 */
   }
 }
 
