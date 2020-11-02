@@ -1,12 +1,12 @@
 :root {
-    --main-color: #ac0714;/* rgb(218,57,73) */
-    --scroll-thumb-hover: rgba(191, 28, 41, 0.83); /* rgba(218, 57, 73, 0.829) */
+    --main-color: rgb(218,57,73);
+    --scroll-thumb-hover: rgba(218, 57, 73, 0.829);
     --manager: rgba(190,2,2, 0.644);
     --moderator: rgba(153,45,34, 0.644);
     --developer: rgba(161,31,198, 0.644);
     --helper: rgba(255, 170, 1, 0.644);
-    --modal-close: #cd1925;/* rgb(168, 42, 55) */
-    --mediar: #b14b59; /* rgb(255, 140, 140) */
+    --modal-close: rgb(168, 42, 55);
+    --mediar: rgb(255, 140, 140);
 }
 
 /*
