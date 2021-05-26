@@ -59,9 +59,34 @@
     .badge-pill {
         color: rgb(255, 228, 228) !important;
     }
+
+    .fixed-top {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 999;
+    }
+
+    .progress-container {
+      width: 100%;
+      background-color: transparent;
+      height: 5px;
+      display: block;
+    }
+    .progress-bar {
+      background-color: var(--main-color);
+      box-shadow:   0 0 3px var(--main-color), 0 0 8px var(--main-color);
+      width: 0%;
+      display: block;
+      height: inherit;
+    }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js" integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ==" crossorigin="anonymous"></script>
 <body>
+    <div class="progress-container fixed-top">
+        <span class="progress-bar"></span>
+      </div>
     <div class="text-left d-xl-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center ateams-header" style="background: linear-gradient(#05111500, #040e10), url('assets/img/bg.png') no-repeat top center / cover; position: relative; z-index:1;">
         <div class="row justify-content-center align-items-center align-content-center header-center-content">
             <div class="col-md-6" style="max-width: 100%; padding-bottom: 50px;"><!--Po Halloweene odstranit padding bottom-->
@@ -170,7 +195,41 @@
     </div>
     </div>
     <script>
-        new ClipboardJS('#mnrp-players');
+        function scrollProgressBar() {
+          var getMax = function () {
+            return $(document).height() - $(window).height();
+          };
+      
+          var getValue = function () {
+            return $(window).scrollTop();
+          };
+      
+          var progressBar = $(".progress-bar"),
+            max = getMax(),
+            value,
+            width;
+      
+          var getWidth = function () {
+            value = getValue();
+            width = (value / max) * 100;
+            width = width + "%";
+            return width;
+          };
+      
+          var setWidth = function () {
+            progressBar.css({ width: getWidth() });
+          };
+      
+          $(document).on("scroll", setWidth);
+          $(window).on("resize", function () {
+            max = getMax();
+            setWidth();
+          });
+        }
+
+        $(document).ready(function () {
+         scrollProgressBar();
+        });
     </script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
